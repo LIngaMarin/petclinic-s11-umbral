@@ -127,4 +127,60 @@ class VisitServiceTest {
         assertEquals("Mascota S11", encontrada.getPet().getName());
         assertEquals("Pruebas", encontrada.getVet().getLastName());
     }
-}
+
+    /**
+     * Crea una visita y actualiza descripción, fecha y costo desde una entidad separada.
+     * Comprueba que los cambios persistan con el mismo ID y conserven ambas relaciones.
+     */
+    @Test
+    void testUpdateVisit() throws Exception {
+        Visit creada = service.create(nuevaVisita());
+        Integer id = creada.getId();
+        Integer petId = creada.getPet().getId();
+        Integer vetId = creada.getVet().getId();
+        recargarDesdeBaseDeDatos();
+        creada.setDescription("Control actualizado S11");
+        creada.setVisitDate(LocalDate.of(2026, 11, 6));
+        creada.setCost(new BigDecimal("60.75"));
+
+        Visit actualizada = service.update(creada);
+        recargarDesdeBaseDeDatos();
+
+        Visit recuperada = service.findById(id);
+        assertAll(
+                () -> assertEquals(id, actualizada.getId()),
+                () -> assertEquals("Control actualizado S11", recuperada.getDescription()),
+                () -> assertEquals(LocalDate.of(2026, 11, 6), recuperada.getVisitDate()),
+                () -> assertEquals(new BigDecimal("60.75"), recuperada.getCost()),
+                () -> assertEquals(petId, recuperada.getPet().getId()),
+                () -> assertEquals(vetId, recuperada.getVet().getId()));
+    }
+
+    /**
+     * Crea dos visitas para la misma mascota y elimina solo la primera.
+     * Verifica su ausencia y la conservación de la otra visita, mascota, dueño y veterinario.
+     */
+    @Test
+    void testDeleteVisit() throws Exception {
+        Visit primera = service.create(nuevaVisita());
+        Integer id = primera.getId();
+        Integer petId = primera.getPet().getId();
+        Integer ownerId = primera.getPet().getOwnerId();
+        Integer vetId = primera.getVet().getId();
+        Visit otra = new Visit();
+        otra.setPet(primera.getPet());
+        otra.setVet(primera.getVet());
+        otra.setVisitDate(LocalDate.of(2026, 11, 7));
+        otra.setDescription("Segunda visita S11");
+        Integer otroId = service.create(otra).getId();
+        recargarDesdeBaseDeDatos();
+
+        service.delete(id);
+        recargarDesdeBaseDeDatos();
+
+        assertThrows(VisitNotFoundException.class, () -> service.findById(id));
+        assertEquals("Segunda visita S11", service.findById(otroId).getDescription());
+        assertEquals("Mascota S11", entityManager.find(Pet.class, petId).getName());
+        assertNotNull(entityManager.find(Owner.class, ownerId));
+        assertNotNull(entityManager.find(Vet.class, vetId));
+    }}
