@@ -183,4 +183,60 @@ class VisitServiceTest {
         assertEquals("Mascota S11", entityManager.find(Pet.class, petId).getName());
         assertNotNull(entityManager.find(Owner.class, ownerId));
         assertNotNull(entityManager.find(Vet.class, vetId));
+    }
+    /**
+     * Crea y elimina una visita propia para obtener un ID garantizado como ausente.
+     * La consulta debe lanzar VisitNotFoundException e identificar el registro solicitado.
+     */
+    @Test
+    void testFindVisitByIdNotFound() throws Exception {
+        Integer id = service.create(nuevaVisita()).getId();
+        service.delete(id);
+        recargarDesdeBaseDeDatos();
+
+        VisitNotFoundException error = assertThrows(VisitNotFoundException.class,
+                () -> service.findById(id));
+        assertTrue(error.getMessage().contains(id.toString()));
+    }
+
+    /**
+     * Prepara todas las relaciones de una visita pero omite su fecha obligatoria.
+     * El servicio debe rechazarla con DataIntegrityViolationException; el rollback
+     * de la prueba descarta la transacción fallida sin ejecutar más consultas.
+     */
+    @Test
+    void testCreateVisitWithoutDate() {
+        Visit invalida = nuevaVisita();
+        invalida.setVisitDate(null);
+
+        assertThrows(org.springframework.dao.DataIntegrityViolationException.class,
+                () -> service.create(invalida));
+    }
+
+    /**
+     * Crea dos visitas para una mascota y otra visita para una mascota distinta.
+     * Una de las primeras no tiene veterinario, permitido por el esquema.
+     * La consulta debe devolver solo los dos IDs propios, conservar la relación
+     * y persistir el veterinario nulo sin incluir visitas de otra mascota.
+     */
+    @Test
+    void testFindVisitsByPetId() {
+        Visit primera = service.create(nuevaVisita());
+        Integer petId = primera.getPet().getId();
+        Visit segunda = new Visit();
+        segunda.setPet(primera.getPet());
+        segunda.setVisitDate(LocalDate.of(2026, 11, 8));
+        segunda.setDescription("Visita sin veterinario S11");
+        Integer segundaId = service.create(segunda).getId();
+        Visit ajena = service.create(nuevaVisita());
+        recargarDesdeBaseDeDatos();
+
+        var encontradas = service.findByPetId(petId);
+        var ids = encontradas.stream().map(Visit::getId).collect(java.util.stream.Collectors.toSet());
+        assertEquals(java.util.Set.of(primera.getId(), segundaId), ids);
+        assertFalse(ids.contains(ajena.getId()));
+        assertTrue(encontradas.stream().allMatch(visita -> visita.getPet().getId().equals(petId)));
+        Visit sinVeterinario = encontradas.stream()
+                .filter(visita -> visita.getId().equals(segundaId)).findFirst().orElseThrow();
+        assertNull(sinVeterinario.getVet());
     }}
