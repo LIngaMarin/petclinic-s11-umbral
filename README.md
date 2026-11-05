@@ -9,6 +9,8 @@ mvn test -Dspring.profiles.active=h2
 - Lucas Inga Marin: VetServiceTest, OwnerServiceTest
 - Lucas Inga Marin (casos 5 y 6, asignados a Dario y hechos con autorización del docente): PetTypeServiceTest, VetSpecialtyServiceTest
 
+- Sheila Aguirre Tejada: SpecialityServiceTest, VisitServiceTest (casos 3 y 4)
+
 ## Conflictos resueltos
 - README.md: dos ramas editaron el final del archivo; se conservaron ambos cambios (rama A).
 - README.md: se unieron los cambios de dos ramas al resolver el conflicto (rama B).
