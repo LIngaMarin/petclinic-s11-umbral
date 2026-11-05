@@ -75,4 +75,37 @@ class SpecialityServiceTest {
         assertEquals(id, encontrada.getId());
         assertEquals("Dermatología S11", encontrada.getName());
     }
-}
+
+    /**
+     * Crea una especialidad, cambia su nombre y ejecuta update.
+     * La lectura posterior debe conservar el ID y mostrar el nuevo nombre.
+     */
+    @Test
+    void testUpdateSpeciality() throws Exception {
+        Speciality creada = service.create(nuevaEspecialidad("Nombre inicial S11"));
+        Integer id = creada.getId();
+        recargarDesdeBaseDeDatos();
+        creada.setName("Nombre actualizado S11");
+
+        Speciality actualizada = service.update(creada);
+        recargarDesdeBaseDeDatos();
+
+        assertEquals(id, actualizada.getId());
+        assertEquals("Nombre actualizado S11", service.findById(id).getName());
+    }
+
+    /**
+     * Crea una especialidad y elimina su ID mediante el servicio.
+     * Tras ejecutar el SQL, la consulta debe lanzar la excepción de ausencia.
+     */
+    @Test
+    void testDeleteSpeciality() throws Exception {
+        Integer id = service.create(nuevaEspecialidad("Eliminar S11")).getId();
+        recargarDesdeBaseDeDatos();
+
+        service.delete(id);
+        recargarDesdeBaseDeDatos();
+
+        assertThrows(com.tecsup.petclinic.exceptions.SpecialityNotFoundException.class,
+                () -> service.findById(id));
+    }}
