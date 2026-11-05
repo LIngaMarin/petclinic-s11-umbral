@@ -11,3 +11,4 @@ mvn test -Dspring.profiles.active=h2
 
 ## Conflictos resueltos
 - README.md: dos ramas editaron el final del archivo; se conservaron ambos cambios (rama A).
+- README.md: se unieron los cambios de dos ramas al resolver el conflicto (rama B).
