@@ -1,0 +1,81 @@
+Extractos reales de Maven Wrapper — Laboratorio 11, casos 3 y 4.
+Resultados del 2026-11-05; logs originales en target/lab11-evidencias.
+
+ambos-01.log
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.681 s -- in com.tecsup.petclinic.services.SpecialityServiceTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.111 s -- in com.tecsup.petclinic.services.VisitServiceTest
+[INFO] Tests run: 14, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+[INFO] Finished at: 2026-11-05T14:48:41-05:00
+
+caso3-01.log
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.659 s -- in com.tecsup.petclinic.services.SpecialityServiceTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+[INFO] Finished at: 2026-11-05T14:35:44-05:00
+
+caso3-02.log
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.508 s -- in com.tecsup.petclinic.services.SpecialityServiceTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+[INFO] Finished at: 2026-11-05T14:36:32-05:00
+
+caso3-03.log
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.670 s -- in com.tecsup.petclinic.services.SpecialityServiceTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+[INFO] Finished at: 2026-11-05T14:37:12-05:00
+
+caso4-01.log
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.654 s -- in com.tecsup.petclinic.services.VisitServiceTest
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+[INFO] Finished at: 2026-11-05T14:38:40-05:00
+
+caso4-02.log
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.165 s -- in com.tecsup.petclinic.services.VisitServiceTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+[INFO] Finished at: 2026-11-05T14:47:33-05:00
+
+caso4-03.log
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.797 s -- in com.tecsup.petclinic.services.VisitServiceTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+[INFO] Finished at: 2026-11-05T14:48:13-05:00
+
+suite-01.log
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.635 s -- in com.tecsup.petclinic.PetClinicApplicationTests
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.327 s -- in com.tecsup.petclinic.services.OwnerServiceTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.703 s -- in com.tecsup.petclinic.services.PetServiceMockitoTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.113 s -- in com.tecsup.petclinic.services.PetServiceTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.437 s -- in com.tecsup.petclinic.services.SpecialityServiceTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.042 s -- in com.tecsup.petclinic.services.VetServiceTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.087 s -- in com.tecsup.petclinic.services.VisitServiceTest
+[INFO] Tests run: 46, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+[INFO] Finished at: 2026-11-05T14:49:03-05:00
+
+suite-02.log
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.478 s -- in com.tecsup.petclinic.PetClinicApplicationTests
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.294 s -- in com.tecsup.petclinic.services.OwnerServiceTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.623 s -- in com.tecsup.petclinic.services.PetServiceMockitoTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.082 s -- in com.tecsup.petclinic.services.PetServiceTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.401 s -- in com.tecsup.petclinic.services.SpecialityServiceTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.033 s -- in com.tecsup.petclinic.services.VetServiceTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.076 s -- in com.tecsup.petclinic.services.VisitServiceTest
+[INFO] Tests run: 46, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+[INFO] Finished at: 2026-11-05T14:49:23-05:00
+
+suite-final.log
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.027 s -- in com.tecsup.petclinic.PetClinicApplicationTests
+[INFO] Tests run: 9, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.247 s -- in com.tecsup.petclinic.services.OwnerServiceTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.593 s -- in com.tecsup.petclinic.services.PetServiceMockitoTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.111 s -- in com.tecsup.petclinic.services.PetServiceTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.442 s -- in com.tecsup.petclinic.services.SpecialityServiceTest
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.036 s -- in com.tecsup.petclinic.services.VetServiceTest
+[INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.075 s -- in com.tecsup.petclinic.services.VisitServiceTest
+[INFO] Tests run: 46, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+[INFO] Finished at: 2026-11-05T14:51:42-05:00

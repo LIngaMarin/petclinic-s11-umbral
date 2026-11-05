@@ -184,6 +184,7 @@ class VisitServiceTest {
         assertNotNull(entityManager.find(Owner.class, ownerId));
         assertNotNull(entityManager.find(Vet.class, vetId));
     }
+
     /**
      * Crea y elimina una visita propia para obtener un ID garantizado como ausente.
      * La consulta debe lanzar VisitNotFoundException e identificar el registro solicitado.
@@ -239,4 +240,5 @@ class VisitServiceTest {
         Visit sinVeterinario = encontradas.stream()
                 .filter(visita -> visita.getId().equals(segundaId)).findFirst().orElseThrow();
         assertNull(sinVeterinario.getVet());
-    }}
+    }
+}

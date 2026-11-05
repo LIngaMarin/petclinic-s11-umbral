@@ -109,6 +109,7 @@ class SpecialityServiceTest {
         assertThrows(com.tecsup.petclinic.exceptions.SpecialityNotFoundException.class,
                 () -> service.findById(id));
     }
+
     /**
      * Genera un ID propio y lo elimina para garantizar que ya no exista.
      * La búsqueda debe lanzar SpecialityNotFoundException con ese identificador.
@@ -163,4 +164,5 @@ class SpecialityServiceTest {
                 () -> assertEquals(10, recuperada.getOpeningHour()),
                 () -> assertEquals(19, recuperada.getClosingHour()),
                 () -> assertEquals(1, service.findByName("Horario S11").size()));
-    }}
+    }
+}
